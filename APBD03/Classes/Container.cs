@@ -5,9 +5,11 @@ namespace APBD03.Classes;
 
 public abstract class Container : IContainer
 {
-    private static int _nextId = 0;
+    private static string _numberStart = "KON";
+    private static int _nextId;
 
     private double _cargoMas;
+    public string? Type { get; set; }
     public double Height { get; }
     public double ContainerMas { get; }
     public double Depth { get; }
@@ -28,8 +30,17 @@ public abstract class Container : IContainer
             {
                 _cargoMas = value;
             }
-            
         }
+    }
+
+    protected Container(double cargoMas, double height, double containerMas, double depth, double maxPayload)
+    {
+        _cargoMas = cargoMas;
+        Height = height;
+        ContainerMas = containerMas;
+        Depth = depth;
+        MaxPayload = maxPayload;
+        Number = GenerateNumber();
     }
 
     public void Deloading()
@@ -42,7 +53,10 @@ public abstract class Container : IContainer
         CargoMas = CargoMas + mas;
     }
 
-    public abstract string GenerateNumber();
+    public string GenerateNumber()
+    {
+        return $"{_numberStart}-{Type}-{_nextId++}";
+    }
 
     public override string ToString()
     {

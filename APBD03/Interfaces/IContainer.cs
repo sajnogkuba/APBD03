@@ -4,5 +4,5 @@ public interface IContainer
 {
     public void Deloading();
     public void LoadContainer(double mas);
-    public abstract string GenerateNumber();
+    public string GenerateNumber();
 }
