@@ -55,6 +55,12 @@ public class ContainerShip(string name, double maximumSpeed, int maxNumberOfCont
         baseVehicle.RemoveContainer(container);
         newVehicle.LoadContainer(container);
     }
+
+    public string ShipAndItsContainers()
+    {
+        var result = this + " Contains";
+        return Containers.Aggregate(result, (current, container) => current + $"\n - {container}");
+    }
     
     public override string ToString()
     {
