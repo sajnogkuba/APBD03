@@ -3,14 +3,19 @@ using APBD03.Interfaces;
 
 namespace APBD03.Classes;
 
-public abstract class Container(double cargoMas, double height, double containerMas, double depth, double maxPayload,
+public abstract class Container(
+    double cargoMas,
+    double height,
+    double containerMas,
+    double depth,
+    double maxPayload,
     string type) : IContainer
 {
     private static int _nextId;
     private const string NumberStart = "KON";
 
     private double _cargoMas;
-    public string? Type { get; set; }
+    public string Type { get; }
     public double Height { get; }
     public double ContainerMas { get; }
     public double Depth { get; }
@@ -33,7 +38,7 @@ public abstract class Container(double cargoMas, double height, double container
             }
         }
     }
-    
+
 
     public void Deloading()
     {
@@ -42,7 +47,7 @@ public abstract class Container(double cargoMas, double height, double container
 
     public void LoadContainer(double mas)
     {
-        CargoMas = CargoMas + mas;
+        CargoMas += mas;
     }
 
     public string GenerateNumber()
