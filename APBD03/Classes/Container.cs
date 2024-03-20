@@ -1,3 +1,4 @@
+using System.Data;
 using APBD03.Exception;
 using APBD03.Interfaces;
 
@@ -53,6 +54,18 @@ public abstract class Container(
     public string GenerateNumber()
     {
         return $"{NumberStart}-{Type}-{_nextId++}";
+    }
+
+    public Container FindByNumber(List<Container> containers, string number)
+    {
+        foreach (var container in containers)
+        {
+            if (container.Number == number)
+            {
+                return container;
+            }
+        }
+        throw new ConstraintException($"Container with number {number} not found in given list.");
     }
 
     public override string ToString()
