@@ -3,7 +3,7 @@ using APBD03.Interfaces;
 
 namespace APBD03.Classes;
 
-public class ContainerShip(double maximumSpeed, int maxNumberOfContainers, double maxContainersWeight) : IVevicle
+public class ContainerShip(double maximumSpeed, int maxNumberOfContainers, double maxContainersWeight) : IVehicle
 {
     public List<Container> Containers { get; } = new();
     public double MaximumSpeed { get; } = maximumSpeed;
@@ -48,5 +48,11 @@ public class ContainerShip(double maximumSpeed, int maxNumberOfContainers, doubl
     {
         RemoveContainer(Container.FindByNumber(Containers, number));
         LoadContainer(container);
+    }
+
+    public void TransferContainer(IVehicle baseVehicle, IVehicle newVehicle, Container container)
+    {
+        baseVehicle.RemoveContainer(container);
+        newVehicle.LoadContainer(container);
     }
 }
