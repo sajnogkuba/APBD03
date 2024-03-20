@@ -23,14 +23,14 @@ public class LiquidContainer(
     {
         if (DengerousCargo)
         {
-            if (CargoMas + mas > MaxPayload * 0.5)
+            if (CargoMass + mas > MaxPayload * 0.5)
             {
                 SendWarningMessage("Loaded dangerous cargo to more than 50% of payload.");
             }
         }
         else
         {
-            if (CargoMas + mas > MaxPayload * 0.9)
+            if (CargoMass + mas > MaxPayload * 0.9)
             {
                 SendWarningMessage("Loaded liquid to more than 90% of payload.");
             }

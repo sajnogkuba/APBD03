@@ -19,6 +19,6 @@ public class GasContainer(
 
     public new void Deloading()
     {
-        CargoMas *= 0.05;
+        CargoMass *= 0.05;
     }
 }

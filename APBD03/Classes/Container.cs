@@ -14,7 +14,7 @@ public abstract class Container(
     private static int _nextId;
     private const string NumberStart = "KON";
 
-    private double _cargoMas;
+    private double _cargoMass;
     public string Type { get; }
     public double Height { get; }
     public double ContainerMas { get; }
@@ -23,9 +23,9 @@ public abstract class Container(
 
     public double MaxPayload { get; }
 
-    public double CargoMas
+    public double CargoMass
     {
-        get => _cargoMas;
+        get => _cargoMass;
         set
         {
             if (value > MaxPayload)
@@ -34,7 +34,7 @@ public abstract class Container(
             }
             else
             {
-                _cargoMas = value;
+                _cargoMass = value;
             }
         }
     }
@@ -42,12 +42,12 @@ public abstract class Container(
 
     public void Deloading()
     {
-        CargoMas = 0;
+        CargoMass = 0;
     }
 
     public void LoadContainer(double mas)
     {
-        CargoMas += mas;
+        CargoMass += mas;
     }
 
     public string GenerateNumber()
@@ -57,7 +57,7 @@ public abstract class Container(
 
     public override string ToString()
     {
-        return $"[{GetType().Name}] -- Number: {Number}, Cargo mas: {CargoMas}, Height: {Height}, Depth: {Depth}" +
+        return $"[{GetType().Name}] -- Number: {Number}, Cargo mas: {CargoMass}, Height: {Height}, Depth: {Depth}" +
                $", Container mas: {ContainerMas}";
     }
 }

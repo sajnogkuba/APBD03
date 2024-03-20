@@ -15,17 +15,32 @@ public class ContainerShip(double maximumSpeed, int maxNumberOfContainers, doubl
     public void LoadContainer(Container container)
     {
         Containers.Add(container);
-        CurrentContainersWeight += container.CargoMas;
+        CurrentContainersWeight += container.CargoMass;
         if (CurrentNumberOfContainers == MaxNumberOfContainers)
         {
             throw new OverfillException("Maximum number of containers already reached.");
         }
         CurrentNumberOfContainers++;
-        if (CurrentContainersWeight + container.CargoMas > MaxContainersWeight)
+        if (CurrentContainersWeight + container.CargoMass > MaxContainersWeight)
         {
             throw new OverfillException($"Maximum container weight is {MaxContainersWeight}, you tray to set " +
-                                        $"{CurrentContainersWeight + container.CargoMas}");
+                                        $"{CurrentContainersWeight + container.CargoMass}");
         }
-        CurrentContainersWeight += CurrentContainersWeight + container.CargoMas;
+        CurrentContainersWeight += CurrentContainersWeight + container.CargoMass;
+    }
+
+    public void LoadContainer(List<Container> containers)
+    {
+        foreach (var container in containers)
+        {
+            LoadContainer(container);
+        }
+    }
+
+    public void RemoveContainer(Container container)
+    {
+        Containers.Remove(container);
+        CurrentNumberOfContainers--;
+        CurrentContainersWeight -= container.CargoMass;
     }
 }
