@@ -2,17 +2,17 @@ namespace APBD03.Classes;
 
 using Interfaces;
 
-public class LiquidContainer(double cargoMas, double height, double containerMas, double depth, double maxPayload)
+public class LiquidContainer(
+    double cargoMas,
+    double height,
+    double containerMas,
+    double depth,
+    double maxPayload,
+    bool dengerousCargo)
     : Container(cargoMas, height, containerMas, depth, maxPayload, "L"), IHazardNotifier
 {
-    public bool DengerousCargo { get; }
+    public bool DengerousCargo { get; } = dengerousCargo;
 
-    public LiquidContainer(double cargoMas, double height, double containerMas, double depth, double maxPayload,
-        bool dengerousCargo)
-        : this(cargoMas, height, containerMas, depth, maxPayload)
-    {
-        DengerousCargo = dengerousCargo;
-    }
 
     public string SendWarningMessage(string message)
     {
