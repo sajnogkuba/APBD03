@@ -46,6 +46,11 @@ public class CoolantContainer(
         base.LoadContainer(mas);
     }
 
+    public override string ToString()
+    {
+        return $"{base.ToString()} Product: {Product}, Temperature: {Temperature}";
+    }
+
     public new void LoadContainer(double mas)
     {
         throw new InvalidProductException($"You have to specify which product you try to pack.");

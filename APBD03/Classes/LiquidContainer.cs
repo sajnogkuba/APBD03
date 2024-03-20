@@ -1,6 +1,6 @@
-namespace APBD03.Classes;
+using APBD03.Interfaces;
 
-using Interfaces;
+namespace APBD03.Classes;
 
 public class LiquidContainer(
     double cargoMas,
@@ -37,5 +37,10 @@ public class LiquidContainer(
         }
 
         base.LoadContainer(mas);
+    }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()} Dengerous Cargo: {DengerousCargo}";
     }
 }

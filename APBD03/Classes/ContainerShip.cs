@@ -3,8 +3,9 @@ using APBD03.Interfaces;
 
 namespace APBD03.Classes;
 
-public class ContainerShip(double maximumSpeed, int maxNumberOfContainers, double maxContainersWeight) : IVehicle
+public class ContainerShip(string name, double maximumSpeed, int maxNumberOfContainers, double maxContainersWeight) : IVehicle
 {
+    public string Name { get; } = name;
     public List<Container> Containers { get; } = new();
     public double MaximumSpeed { get; } = maximumSpeed;
     public int MaxNumberOfContainers { get; } = maxNumberOfContainers;
@@ -54,5 +55,11 @@ public class ContainerShip(double maximumSpeed, int maxNumberOfContainers, doubl
     {
         baseVehicle.RemoveContainer(container);
         newVehicle.LoadContainer(container);
+    }
+    
+    public override string ToString()
+    {
+        return $"{Name} (maximumSpeed = {MaximumSpeed}, maxNumberOfContainers = {MaxNumberOfContainers}," +
+               $" maxWeight = {MaxContainersWeight})";
     }
 }
