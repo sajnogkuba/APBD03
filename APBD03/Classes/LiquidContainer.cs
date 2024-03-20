@@ -1,10 +1,12 @@
 namespace APBD03.Classes;
 
-public class LiquidContainer : Container
+using APBD03.Interfaces;
+
+public class LiquidContainer(double cargoMas, double height, double containerMas, double depth, double maxPayload)
+    : Container(cargoMas, height, containerMas, depth, maxPayload, "L"), IHazardNotifier
 {
-    public LiquidContainer(double cargoMas, double height, double containerMas, double depth, double maxPayload)
-        : base(cargoMas, height, containerMas, depth, maxPayload)
+    public string SendWarningMessage()
     {
-        Type = "L";
+        throw new NotImplementedException();
     }
 }

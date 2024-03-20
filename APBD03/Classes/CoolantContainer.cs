@@ -1,10 +1,6 @@
 namespace APBD03.Classes;
 
-public class CoolantContainer : Container
+public class CoolantContainer(double cargoMas, double height, double containerMas, double depth, double maxPayload) 
+    : Container(cargoMas, height, containerMas, depth, maxPayload, "C")
 {
-    public CoolantContainer(double cargoMas, double height, double containerMas, double depth, double maxPayload) 
-        : base(cargoMas, height, containerMas, depth, maxPayload)
-    {
-        Type = "C";
-    }
 }

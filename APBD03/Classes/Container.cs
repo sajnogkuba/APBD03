@@ -3,10 +3,11 @@ using APBD03.Interfaces;
 
 namespace APBD03.Classes;
 
-public abstract class Container : IContainer
+public abstract class Container(double cargoMas, double height, double containerMas, double depth, double maxPayload,
+    string type) : IContainer
 {
-    private static string _numberStart = "KON";
     private static int _nextId;
+    private const string NumberStart = "KON";
 
     private double _cargoMas;
     public string? Type { get; set; }
@@ -32,16 +33,7 @@ public abstract class Container : IContainer
             }
         }
     }
-
-    protected Container(double cargoMas, double height, double containerMas, double depth, double maxPayload)
-    {
-        _cargoMas = cargoMas;
-        Height = height;
-        ContainerMas = containerMas;
-        Depth = depth;
-        MaxPayload = maxPayload;
-        Number = GenerateNumber();
-    }
+    
 
     public void Deloading()
     {
@@ -55,12 +47,12 @@ public abstract class Container : IContainer
 
     public string GenerateNumber()
     {
-        return $"{_numberStart}-{Type}-{_nextId++}";
+        return $"{NumberStart}-{Type}-{_nextId++}";
     }
 
     public override string ToString()
     {
         return $"[{GetType().Name}] -- Number: {Number}, Cargo mas: {CargoMas}, Height: {Height}, Depth: {Depth}" +
-               $", Container mas: {CargoMas}";
+               $", Container mas: {ContainerMas}";
     }
 }
