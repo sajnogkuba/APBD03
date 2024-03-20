@@ -3,13 +3,12 @@ using APBD03.Exception;
 namespace APBD03.Classes;
 
 public class CoolantContainer(
-    double cargoMas,
     double height,
     double containerMas,
     double depth,
     double maxPayload,
     Product product,
-    double temperature) : Container(cargoMas, height, containerMas, depth, maxPayload, "C")
+    double temperature) : Container(height, containerMas, depth, maxPayload, "C")
 {
     public Product Product { get; } = product;
     public double Temperature { get; } = temperature;
@@ -36,7 +35,7 @@ public class CoolantContainer(
             throw new InvalidProductException($"You can not pac {product} to container for {Product}");
         }
 
-        if (Temperature < MinTemperatures[product])
+        if (Temperature > MinTemperatures[product])
         {
             throw new TooLowTemperatureException($"Minimum temperature for {product} is" +
                                                  $" {MinTemperatures[product]} temperature in this" +

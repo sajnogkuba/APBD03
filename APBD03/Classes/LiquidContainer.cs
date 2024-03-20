@@ -3,13 +3,12 @@ using APBD03.Interfaces;
 namespace APBD03.Classes;
 
 public class LiquidContainer(
-    double cargoMas,
     double height,
     double containerMas,
     double depth,
     double maxPayload,
     bool dengerousCargo)
-    : Container(cargoMas, height, containerMas, depth, maxPayload, "L"), IHazardNotifier
+    : Container(height, containerMas, depth, maxPayload, "L"), IHazardNotifier
 {
     public bool DengerousCargo { get; } = dengerousCargo;
 

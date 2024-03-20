@@ -16,7 +16,6 @@ public class ContainerShip(string name, double maximumSpeed, int maxNumberOfCont
     public void LoadContainer(Container container)
     {
         Containers.Add(container);
-        CurrentContainersWeight += container.CargoMass;
         if (CurrentNumberOfContainers == MaxNumberOfContainers)
         {
             throw new OverfillException("Maximum number of containers already reached.");
@@ -27,7 +26,7 @@ public class ContainerShip(string name, double maximumSpeed, int maxNumberOfCont
             throw new OverfillException($"Maximum container weight is {MaxContainersWeight}, you tray to set " +
                                         $"{CurrentContainersWeight + container.CargoMass}");
         }
-        CurrentContainersWeight += CurrentContainersWeight + container.CargoMass;
+        CurrentContainersWeight += container.CargoMass;
     }
 
     public void LoadContainer(List<Container> containers)

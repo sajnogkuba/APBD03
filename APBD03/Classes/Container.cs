@@ -5,7 +5,6 @@ using APBD03.Interfaces;
 namespace APBD03.Classes;
 
 public abstract class Container(
-    double cargoMas,
     double height,
     double containerMas,
     double depth,
@@ -13,16 +12,15 @@ public abstract class Container(
     string type) : IContainer
 {
     private static int _nextId;
-    private const string NumberStart = "KON";
 
     private double _cargoMass;
-    public string Type { get; }
-    public double Height { get; }
-    public double ContainerMas { get; }
-    public double Depth { get; }
-    public string Number { get; }
+    public string Type { get; } = type;
+    public double Height { get; } = height;
+    public double ContainerMas { get; } = containerMas;
+    public double Depth { get; } = depth;
+    public string Number { get; } = IContainer.GenerateNumber(type, _nextId++);
 
-    public double MaxPayload { get; }
+    public double MaxPayload { get; } = maxPayload;
 
     public double CargoMass
     {
@@ -31,12 +29,10 @@ public abstract class Container(
         {
             if (value > MaxPayload)
             {
-                throw new OverfillException();
+                throw new OverfillException($"Max payload is {MaxPayload}, you tried set {value}");
             }
-            else
-            {
-                _cargoMass = value;
-            }
+
+            _cargoMass = value;
         }
     }
 
@@ -51,10 +47,7 @@ public abstract class Container(
         CargoMass += mas;
     }
 
-    public string GenerateNumber()
-    {
-        return $"{NumberStart}-{Type}-{_nextId++}";
-    }
+    
 
     public static Container FindByNumber(List<Container> containers, string number)
     {

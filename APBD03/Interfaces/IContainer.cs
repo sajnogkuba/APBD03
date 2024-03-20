@@ -4,7 +4,12 @@ namespace APBD03.Interfaces;
 
 public interface IContainer
 {
+    private const string NumberStart = "KON";
     public void Deloading();
     public void LoadContainer(double mas);
-    public string GenerateNumber();
+
+    public static string GenerateNumber(string type, int num)
+    {
+        return $"{NumberStart}-{type}-{num}";
+    }
 }
