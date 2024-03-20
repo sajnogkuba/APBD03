@@ -56,14 +56,11 @@ public abstract class Container(
         return $"{NumberStart}-{Type}-{_nextId++}";
     }
 
-    public Container FindByNumber(List<Container> containers, string number)
+    public static Container FindByNumber(List<Container> containers, string number)
     {
-        foreach (var container in containers)
+        foreach (var container in containers.Where(container => container.Number == number))
         {
-            if (container.Number == number)
-            {
-                return container;
-            }
+            return container;
         }
         throw new ConstraintException($"Container with number {number} not found in given list.");
     }

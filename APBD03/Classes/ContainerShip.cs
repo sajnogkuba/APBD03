@@ -43,4 +43,10 @@ public class ContainerShip(double maximumSpeed, int maxNumberOfContainers, doubl
         CurrentNumberOfContainers--;
         CurrentContainersWeight -= container.CargoMass;
     }
+
+    public void ReplaceContainer(string number, Container container)
+    {
+        RemoveContainer(Container.FindByNumber(Containers, number));
+        LoadContainer(container);
+    }
 }

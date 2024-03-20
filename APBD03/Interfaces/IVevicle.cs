@@ -7,4 +7,5 @@ public interface IVevicle
     public void LoadContainer(Container container);
     public void LoadContainer(List<Container> containers);
     public void RemoveContainer(Container container);
+    public void ReplaceContainer(string number, Container container);
 }
