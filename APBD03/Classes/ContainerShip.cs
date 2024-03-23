@@ -15,11 +15,12 @@ public class ContainerShip(string name, double maximumSpeed, int maxNumberOfCont
 
     public void LoadContainer(Container container)
     {
-        Containers.Add(container);
+        
         if (CurrentNumberOfContainers == MaxNumberOfContainers)
         {
             throw new OverfillException("Maximum number of containers already reached.");
         }
+        Containers.Add(container);
         CurrentNumberOfContainers++;
         if (CurrentContainersWeight + container.CargoMass > MaxContainersWeight)
         {
